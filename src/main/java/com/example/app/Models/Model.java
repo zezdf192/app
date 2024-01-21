@@ -1,15 +1,16 @@
 package com.example.app.Models;
 
+import com.example.app.Views.ViewAdminFactory;
 import com.example.app.Views.ViewFactory;
 
 public class Model {
     private static Model model;
     private final ViewFactory viewFactory;
-    //private final ViewAdminFactory viewAdminFactory;
+    private final ViewAdminFactory viewAdminFactory;
 
     private Model() {
         this.viewFactory = new ViewFactory();
-        //this.viewAdminFactory = new ViewAdminFactory();
+        this.viewAdminFactory = new ViewAdminFactory();
     }
 
     public static synchronized Model getInstance() {
@@ -24,7 +25,7 @@ public class Model {
         return viewFactory;
     }
 
-//    public ViewAdminFactory getViewAdminFactory() {
-//        return viewAdminFactory;
-//    }
+    public ViewAdminFactory getViewAdminFactory() {
+        return viewAdminFactory;
+    }
 }

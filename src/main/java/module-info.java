@@ -9,5 +9,7 @@ module com.example.app {
 
     exports com.example.app.Controller;
     exports com.example.app.Controller.Client;
+    exports com.example.app.Controller.Admin;
+    exports com.example.app.Controller.Admin.ManageStore;
 
 }
