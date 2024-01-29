@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<?import javafx.scene.layout.VBox?>
+<AnchorPane prefHeight="597.0" prefWidth="810.0" stylesheets="@../../../Styles/Login.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.app.Controller.Admin.DetailStore.CreateNewItemInStoreController">
+    <children>
+        <Button fx:id="create_btn" layoutX="709.0" layoutY="543.0" mnemonicParsing="false" text="Xác nhận" />
+        <Text layoutX="316.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 24px; -fx-font-weight: 700; -fx-fill: #212c8f;" text="Thêm mới vật tư" />
+      <ScrollPane layoutX="46.0" layoutY="106.0" prefHeight="426.0" prefWidth="728.0">
+          <content>
+              <VBox fx:id="vbox" layoutX="1.0" prefHeight="407.0" prefWidth="700.0" >
+                  <children></children>
+              </VBox>
+          </content>
+      </ScrollPane>
+      <Text layoutX="46.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px;" text="Mã vật tư" />
+      <Text layoutX="253.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px;" text="Tên vật tư" />
+      <Text layoutX="646.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px;" text="Số lượng" />
+    </children>
+
+</AnchorPane>

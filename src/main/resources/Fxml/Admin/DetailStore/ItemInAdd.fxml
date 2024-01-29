@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+
+<?import javafx.scene.control.TextField?>
+<AnchorPane prefHeight="60.0" prefWidth="688.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.app.Controller.Admin.DetailStore.ItemInAdd">
+   <children>
+      <Text fx:id="itemId" layoutX="24.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16px; -fx-font-weight: 700;" text="Text" />
+      <Text fx:id="itemName" layoutX="237.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16px;" text="Text" />
+      <TextField fx:id="quantity"  layoutX="572.0" layoutY="13.0" prefHeight="25.0" prefWidth="102.0" />
+   </children>
+</AnchorPane>
