@@ -1,0 +1,118 @@
+
+GO
+CREATE TABLE [dbo].[DetailIE](
+	[IEId] [varchar](255) NOT NULL,
+	[ItemId] [varchar](255) NOT NULL,
+	[Quantity] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[IEId] ASC,
+	[ItemId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[IE]    Script Date: 29/01/2024 5:40:16 CH ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[IE](
+	[IEId] [varchar](255) NOT NULL,
+	[TimeIE] [varchar](255) NULL,
+	[PersonId] [varchar](255) NOT NULL,
+	[StoreId] [varchar](255) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[IEId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Item]    Script Date: 29/01/2024 5:40:16 CH ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Item](
+	[ItemId] [varchar](255) NOT NULL,
+	[RoleItem] [varchar](20) NOT NULL,
+	[NameItem] [varchar](255) NULL,
+	[Origin] [varchar](255) NULL,
+	[Quantity] [int] NULL,
+	[Img] [varchar](255) NULL,
+	[DesItem] [text] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ItemId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Person]    Script Date: 29/01/2024 5:40:16 CH ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Person](
+	[PersonId] [varchar](255) NOT NULL,
+	[RolePerson] [varchar](20) NOT NULL,
+	[NamePerson] [varchar](255) NULL,
+	[Email] [varchar](255) NULL,
+	[PhoneNumber] [int] NULL,
+	[AddressPerson] [varchar](255) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[PersonId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[RoleCode]    Script Date: 29/01/2024 5:40:16 CH ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[RoleCode](
+	[KeyCode] [varchar](20) NOT NULL,
+	[TypeCode] [varchar](20) NULL,
+	[ValueRole] [varchar](255) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[KeyCode] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Store]    Script Date: 29/01/2024 5:40:16 CH ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Store](
+	[StoreId] [varchar](255) NOT NULL,
+	[NameStore] [varchar](255) NULL,
+	[AddressStore] [varchar](255) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[StoreId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[DetailIE]  WITH CHECK ADD FOREIGN KEY([IEId])
+REFERENCES [dbo].[IE] ([IEId])
+GO
+ALTER TABLE [dbo].[DetailIE]  WITH CHECK ADD FOREIGN KEY([ItemId])
+REFERENCES [dbo].[Item] ([ItemId])
+GO
+ALTER TABLE [dbo].[IE]  WITH CHECK ADD FOREIGN KEY([PersonId])
+REFERENCES [dbo].[Person] ([PersonId])
+GO
+ALTER TABLE [dbo].[IE]  WITH CHECK ADD FOREIGN KEY([StoreId])
+REFERENCES [dbo].[Store] ([StoreId])
+GO
+ALTER TABLE [dbo].[Item]  WITH CHECK ADD FOREIGN KEY([RoleItem])
+REFERENCES [dbo].[RoleCode] ([KeyCode])
+GO
+ALTER TABLE [dbo].[Person]  WITH CHECK ADD FOREIGN KEY([RolePerson])
+REFERENCES [dbo].[RoleCode] ([KeyCode])
+GO
+USE [master]
+GO
+ALTER DATABASE [QLKH] SET  READ_WRITE 
+GO
