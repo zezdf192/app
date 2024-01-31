@@ -4,9 +4,9 @@ import java.sql.*;
 
 public class ConnectDB {
 
-    private static final String JDBC_URL = "jdbc:sqlserver://DESKTOP-V09UCFU\\SQLEXPRESS:1433;databaseName=QLKH;encrypt=true;trustServerCertificate=true";
+    private static final String JDBC_URL = "jdbc:sqlserver://LAPTOP-B60UFJ89\\MSSQLSERVER08:1433;databaseName=QLKH;encrypt=true;trustServerCertificate=true";
     private static final String USERNAME = "sa";
-    private static final String PASSWORD = "123";
+    private static final String PASSWORD = "123456";
 
     public static Connection getConnection() throws SQLException {
         Connection conn = null;

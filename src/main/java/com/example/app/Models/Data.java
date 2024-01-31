@@ -14,11 +14,14 @@ import java.util.List;
 
 public class Data {
     private ItemStore currentEditStore;
+
+    private Item currentEditItem;
     private List<DetailIE>  currentDetailIE;
 
     public Data() {
         currentEditStore = new ItemStore();
         currentDetailIE = new ArrayList<>();
+        currentEditItem = new Item();
         getAllItem();
     }
 
@@ -43,6 +46,12 @@ public class Data {
 
     public ItemStore getCurrentEditStore() {
         return currentEditStore;
+    }
+
+    public Item getCurentEditItem() {return currentEditItem;}
+
+    public void setCurrentEditItem(Item currentEditItem) {
+        this.currentEditItem = currentEditItem;
     }
 
     public void setCurrentEditStore(ItemStore currentEditStore) {

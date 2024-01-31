@@ -15,6 +15,8 @@ public class ViewAdminFactory {
     private final ObjectProperty<AdminMenuOptions> adminSelectedMenuItem;
     private AnchorPane manageStoreView;
 
+    private AnchorPane manageItemView;
+
 
     public ViewAdminFactory() {
         this.adminSelectedMenuItem = new SimpleObjectProperty<>();
@@ -35,6 +37,27 @@ public class ViewAdminFactory {
         return manageStoreView;
     }
 
+    public AnchorPane getManageStoreView() {
+        if (manageStoreView == null) {
+            try {
+                manageStoreView = new FXMLLoader(getClass().getResource("/Fxml/Admin/ManageStore/ManageStore.fxml")).load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return manageStoreView;
+    }
+
+    public AnchorPane getManageItemView() {
+        if (manageItemView == null) {
+            try {
+                manageItemView = new FXMLLoader(getClass().getResource("/Fxml/Admin/ManageItem/ManageItem.fxml")).load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return manageItemView;
+    }
 
 
     public void showAdminWindow() {

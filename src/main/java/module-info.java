@@ -11,5 +11,6 @@ module com.example.app {
     exports com.example.app.Controller.Client;
     exports com.example.app.Controller.Admin;
     exports com.example.app.Controller.Admin.ManageStore;
+    exports com.example.app.Controller.Admin.ManageItem;
     exports com.example.app.Controller.Admin.DetailStore;
 }
