@@ -1,4 +1,11 @@
 package com.example.app.Views;
 
-public class ClientMenuOptions {
+public enum ClientMenuOptions {
+    INFOACCOUNT,
+
+    IMPORTITEM,
+
+    EXPORTITEM,
+    STORE,
+    OTHER
 }

@@ -7,37 +7,27 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ClientController {
-//    public BorderPane client_parent;
-//
-//    @Override
-//    public void initialize(URL url, ResourceBundle resourceBundle) {
-//        Model.getInstance().getViewFactory().getClientSelectedMenuItem().addListener((observableValue, oldVal, newVal) -> {
-//            switch (newVal) {
-//                case SEARCH:
-//                    client_parent.setCenter(Model.getInstance().getViewFactory().getSearchView());
-//                    break;
-//                case COLLECTION:
-//                    client_parent.setCenter(Model.getInstance().getViewFactory().getCollectionView());
-//                    break;
-//                case MY_MUSIC:
-//                    client_parent.setCenter(Model.getInstance().getViewFactory().getMyMusicView());
-//                    break;
-//                case PLAY_LIST:
-//                    client_parent.setCenter(Model.getInstance().getViewFactory().getPlaylistView());
-//                    break;
-//                case BOTTOM_VIEW:
-//                    client_parent.setBottom(Model.getInstance().getViewFactory().getBottomView());
-//                    break;
-//                case DIV:
-//                    client_parent.setBottom(Model.getInstance().getViewFactory().getDivView());
-//                    break;
-//                case HOME:
-//                    client_parent.setCenter(Model.getInstance().getViewFactory().getHomeView());
-//                    break;
-//                default:
-//
-//                    break;
-//            }
-//        });
-//    }
+    public BorderPane client_parent;
+
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        Model.getInstance().getViewFactory().getClientSelectedMenuItem().addListener((observableValue, oldVal, newVal) -> {
+            switch (newVal) {
+                case INFOACCOUNT:
+                    client_parent.setCenter(Model.getInstance().getViewFactory().getInfoAccountView());
+                    break;
+                case IMPORTITEM:
+                    client_parent.setCenter(Model.getInstance().getViewFactory().getImportItemView());
+                    break;
+                case EXPORTITEM:
+                    client_parent.setCenter(Model.getInstance().getViewFactory().getExportItemView());
+                    break;
+                case STORE:
+                    client_parent.setCenter(Model.getInstance().getViewFactory().getStoreView());
+                    break;
+                default:
+
+                    break;
+            }
+        });
+    }
 }

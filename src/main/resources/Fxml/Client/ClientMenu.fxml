@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="633.0" prefWidth="248.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.app.Controller.Client.ClientMenuController">
+    <AnchorPane prefHeight="500.0" prefWidth="232.0" style="-fx-opacity: 1;">
+        <AnchorPane layoutX="11.0" layoutY="14.0" prefHeight="59.0" prefWidth="191.0" style="-fx-background-radius: 12px;" styleClass="background_item">
+            <stylesheets>
+                <URL value="@../../Styles/page.css" />
+                <URL value="@../../Styles/page.css" />
+            </stylesheets>
+            <Button fx:id="manage_user" layoutX="4.0" layoutY="10.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="210.0" style="-fx-background-color: none;" styleClass="icon_text" text="Thông tin tài khoản">
+                <graphic>
+                    <!--                    <FontAwesomeIconView glyphName="HOME" size="24.0" text="" />-->
+                </graphic>
+                <stylesheets>
+                    <URL value="@../../Styles/page.css" />
+                    <URL value="@../../Styles/page.css" />
+                </stylesheets>
+            </Button>
+        </AnchorPane>
+        <AnchorPane layoutX="11.0" layoutY="138.0" prefHeight="362.0" prefWidth="224.0" style="-fx-background-radius: 12px;" styleClass="background_item">
+            <stylesheets>
+                <URL value="@../../Styles/page.css" />
+                <URL value="@../../Styles/page.css" />
+            </stylesheets>
+            <Button fx:id="manage_other" layoutX="15.0" layoutY="21.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="98.0" style="-fx-background-radius: 10px; -fx-font-size: 18px; -fx-background-color: none;" text="QL Khác">
+                <graphic>
+                    <!--                    <FontAwesomeIconView glyphName="BOOK" text="" />-->
+                </graphic>
+            </Button>
+            <Button fx:id="censorship_btn" layoutX="21.0" layoutY="77.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="106.0" styleClass="icon_text-sm" text="Nhập hàng">
+                <graphic>
+                    <!--                    <FontAwesomeIconView glyphName="HEADPHONES" />-->
+                </graphic>
+                <stylesheets>
+                    <URL value="@../../Styles/page.css" />
+                    <URL value="@../../Styles/page.css" />
+                </stylesheets>
+            </Button>
+            <Button fx:id="statistical" layoutX="21.0" layoutY="139.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="106.0" styleClass="icon_text-sm" text="Xuất hàng">
+                <graphic>
+                    <!--                    <FontAwesomeIconView glyphName="HEART" />-->
+                </graphic>
+                <stylesheets>
+                    <URL value="@../../Styles/page.css" />
+                    <URL value="@../../Styles/page.css" />
+                </stylesheets>
+            </Button>
+            <Button fx:id="playlist" layoutX="29.0" layoutY="193.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="178.0" styleClass="icon_text-sm" text="Xem thông tin kho hàng">
+                <graphic>
+                    <!--                    <FontAwesomeIconView glyphName="LIST" />-->
+                </graphic>
+                <stylesheets>
+                    <URL value="@../../Styles/page.css" />
+                    <URL value="@../../Styles/page.css" />
+                </stylesheets>
+            </Button>
+            <!--            <Button fx:id="add_playlist_page_btn" layoutX="31.0" layoutY="250.0" mnemonicParsing="false" styleClass="icon_text-sm" text="Tạo danh sách phát">-->
+            <!--                <graphic>-->
+            <!--                    <FontAwesomeIconView glyphName="PLUS" />-->
+            <!--                </graphic>-->
+            <!--                <stylesheets>-->
+            <!--                    <URL value="@../../Styles/page.css" />-->
+            <!--                    <URL value="@../../Styles/page.css" />-->
+            <!--                </stylesheets>-->
+            <!--            </Button>-->
+            <Button fx:id="logout_btn" layoutX="120.0" layoutY="309.0" mnemonicParsing="false" styleClass="icon_text" text="Logout">
+                <graphic>
+                    <!--                    <FontAwesomeIconView glyphName="EXTERNAL_LINK" />-->
+                </graphic>
+                <stylesheets>
+                    <URL value="@../../Styles/page.css" />
+                    <URL value="@../../Styles/page.css" />
+                </stylesheets>
+            </Button>
+        </AnchorPane>
+    </AnchorPane>
+</AnchorPane>

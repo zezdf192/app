@@ -15,7 +15,13 @@ public class ViewFactory {
     Scene scene = null;
     private final ObjectProperty<ClientMenuOptions> clientSelectedMenuItem;
 
-    private AnchorPane searchView;
+    private AnchorPane infoAccountView;
+
+    private AnchorPane importItemView;
+
+    private AnchorPane exportItemView;
+
+    private AnchorPane storeView;
 
 
     public ViewFactory() {
@@ -33,16 +39,52 @@ public class ViewFactory {
 
 
 
-    public AnchorPane getSearchView() {
-        if (searchView == null) {
+    public AnchorPane getImportItemView() {
+        if (importItemView == null) {
             try {
-                searchView = new FXMLLoader(getClass().getResource("/Fxml/Client/Search.fxml")).load();
+                importItemView = new FXMLLoader(getClass().getResource("/Fxml/Client/ImportItem/ImportItem.fxml")).load();
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        return searchView;
+        return importItemView;
+    }
+
+    public AnchorPane getExportItemView() {
+        if (exportItemView == null) {
+            try {
+                exportItemView = new FXMLLoader(getClass().getResource("/Fxml/Client/ExportItem/ExportItem.fxml")).load();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return exportItemView;
+    }
+
+    public AnchorPane getInfoAccountView() {
+        if (infoAccountView == null) {
+            try {
+                infoAccountView = new FXMLLoader(getClass().getResource("/Fxml/Client/InfoAccount/InfoAccount.fxml")).load();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return infoAccountView;
+    }
+
+    public AnchorPane getStoreView() {
+        if (storeView == null) {
+            try {
+                storeView = new FXMLLoader(getClass().getResource("/Fxml/Client/Store/Store.fxml")).load();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return storeView;
     }
 
     public void showClientWindow() {
