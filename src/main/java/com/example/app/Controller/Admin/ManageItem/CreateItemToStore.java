@@ -21,6 +21,7 @@ public class CreateItemToStore implements Initializable {
     public TextField quantity_item;
     public TextArea des_item;
     public TextField origin_item;
+    public TextField role_item;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -38,7 +39,7 @@ public class CreateItemToStore implements Initializable {
 
             try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                 preparedStatement.setString(1, Id_item.getText());
-                preparedStatement.setString(2, "I1");
+                preparedStatement.setString(2, role_item.getText());
                 preparedStatement.setString(3, name_item.getText());
                 preparedStatement.setString(4,  origin_item.getText());
                 preparedStatement.setString(5,  quantity_item.getText());

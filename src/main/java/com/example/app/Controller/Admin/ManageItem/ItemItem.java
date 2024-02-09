@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
 public class ItemItem implements Initializable {
@@ -44,6 +45,7 @@ public class ItemItem implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         update_btn.setOnAction(event -> updateItem());
         remove_btn.setOnAction(this::removeItem);
+        detail_btn.setOnAction(event -> showDetailItem());
     }
 
     public void setData(Item item) {
@@ -57,9 +59,31 @@ public class ItemItem implements Initializable {
     }
 
     public void updateItem() {
-        Item item = new Item(id_item.getText(), role_item ,name_item.getText(), origin_item, Integer.parseInt(quantity_item.getText()), img_item, des_item);
-        Data.getDataGLobal.dataGlobal.setCurrentEditItem(item);
+        try{
+            Connection connection = ConnectDB.getConnection();
+            String query = "SELECT * FROM Item where ItemId = ?" ;
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, id_item.getText());
+            ResultSet resultSet = statement.executeQuery();
 
+            while (resultSet.next()) {
+                String itemId = resultSet.getString("ItemId");
+                String roleItem = resultSet.getString("RoleItem");
+                String nameItem = resultSet.getString("NameItem");
+                String origin = resultSet.getString("Origin");
+                int quantity = resultSet.getInt("Quantity");
+                String img = resultSet.getString("Img");
+
+                String desItem = resultSet.getString("DesItem");
+
+                Item item = new Item(itemId, roleItem, nameItem, origin, quantity, img, desItem);
+
+                Data.getDataGLobal.dataGlobal.setCurrentEditItem(item);
+            }
+
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Admin/ManageItem/UpdateItem.fxml"));
             Stage createUserStage = new Stage();
@@ -72,6 +96,45 @@ public class ItemItem implements Initializable {
             e.printStackTrace();
         }
 
+    }
+
+    public void showDetailItem () {
+        try{
+            Connection connection = ConnectDB.getConnection();
+            String query = "SELECT * FROM Item where ItemId = ?" ;
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, id_item.getText());
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                String itemId = resultSet.getString("ItemId");
+                String roleItem = resultSet.getString("RoleItem");
+                String nameItem = resultSet.getString("NameItem");
+                String origin = resultSet.getString("Origin");
+                int quantity = resultSet.getInt("Quantity");
+                String img = resultSet.getString("Img");
+
+                String desItem = resultSet.getString("DesItem");
+
+                Item item = new Item(itemId, roleItem, nameItem, origin, quantity, img, desItem);
+
+                Data.getDataGLobal.dataGlobal.setCurrentEditItem(item);
+            }
+
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Admin/ManageItem/DetailItem.fxml"));
+            Stage createUserStage = new Stage();
+            createStage(loader, createUserStage);
+            createUserStage.setOnHiding(event -> {
+                updateData();
+            });
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void updateData() {
