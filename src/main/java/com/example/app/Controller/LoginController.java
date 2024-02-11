@@ -23,11 +23,11 @@ public class LoginController implements Initializable {
     public Label display_text;
 
 
-//    private static User user; // Đặt làm biến toàn cục
+    private static User user; // Đặt làm biến toàn cục
 
-//    public static User getUser() {
-//        return user;
-//    }
+    public static User getUser() {
+        return user;
+    }
 
     private boolean isPasswordVisible = false;
 
@@ -106,7 +106,8 @@ public class LoginController implements Initializable {
 //        }
 //    }
     private void onLogin() {
-        Model.getInstance().getViewAdminFactory().showAdminWindow();
+//        Model.getInstance().getViewAdminFactory().showAdminWindow();
+        Model.getInstance().getViewFactory().showClientWindow();
         Stage stage = (Stage) login_btn.getScene().getWindow();
         Model.getInstance().getViewFactory().closeStage(stage);
 //        try (Connection connection = ConnectDB.getConnection()) {

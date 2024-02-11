@@ -1,5 +1,6 @@
 package com.example.app.Views;
 
+import com.example.app.Controller.Admin.AdminController;
 import com.example.app.Controller.Client.ClientController;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -93,6 +94,7 @@ public class ViewFactory {
         loader.setController(clientController);
         createStage(loader);
     }
+
 
     public void createStage(FXMLLoader loader) {
         try {
