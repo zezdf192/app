@@ -60,6 +60,7 @@ public class ItemItem implements Initializable {
 
     public void updateItem() {
         try{
+            System.out.println(id_item.getText());
             Connection connection = ConnectDB.getConnection();
             String query = "SELECT * FROM Item where ItemId = ?" ;
             PreparedStatement statement = connection.prepareStatement(query);
