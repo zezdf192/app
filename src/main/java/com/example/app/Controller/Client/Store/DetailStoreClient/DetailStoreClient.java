@@ -1,6 +1,7 @@
-package com.example.app.Controller.Admin.DetailStore;
+package com.example.app.Controller.Client.Store.DetailStoreClient;
 
 import com.example.app.ConnectDB.ConnectDB;
+import com.example.app.Controller.Admin.DetailStore.ItemInDetailStore;
 import com.example.app.Models.Admin.DetailStore.ItemInDetailStoreModel;
 import com.example.app.Models.Admin.ItemStore;
 import com.example.app.Models.Data;
@@ -26,16 +27,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class DetailStoreController implements Initializable {
-
+public class DetailStoreClient implements Initializable {
     public Text nameStore;
     public Text addressStore;
-    public Button addItem;
+    public VBox vbox;
+    public Button importItem;
+    public Button exportItem;
     public Button find_btn;
-    public TextField text_find;
     public ComboBox find_comboBox;
     public ComboBox sort_comboBox;
-    public VBox vbox;
+    public TextField text_find;
+
     private List<ItemInDetailStoreModel> listItemInDetailStore = new ArrayList<>();
 
     @Override
@@ -59,7 +61,9 @@ public class DetailStoreController implements Initializable {
         renderListItem();
         find_btn.setOnAction(event -> findData());
 
-        addItem.setOnAction(event -> handleCreateNewItem());
+        importItem.setOnAction(event -> handleImportNewItem());
+        exportItem.setOnAction(event -> handleExportNewItem());
+
     }
 
     private void updateInfoStore() {
@@ -67,35 +71,6 @@ public class DetailStoreController implements Initializable {
 
         nameStore.setText("Tên kho: " + itemStore.getNameStore());
         addressStore.setText("Địa chỉ: " + itemStore.getAddressStore());
-    }
-
-    private void handleCreateNewItem() {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Admin/DetailStore/CreateNewItemInStore.fxml"));
-        Stage createUserStage = new Stage();
-        createStage(loader, createUserStage);
-
-        createUserStage.setOnHiding(event -> {
-            updateData();
-        });
-    }
-
-    private void updateData() {
-        vbox.getChildren().clear();
-        listItemInDetailStore.clear();
-        callAPI();
-        renderListItem();
-    }
-
-    public void createStage(FXMLLoader loader, Stage stage) {
-        try {
-            Scene scene = new Scene(loader.load());
-            stage.setScene(scene);
-            stage.setResizable(false);
-            stage.setTitle("Create new store");
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     public void callAPI() {
@@ -106,7 +81,8 @@ public class DetailStoreController implements Initializable {
                     "JOIN IE ON DetailIE.IEId = IE.IEId\n" +
                     "JOIN Item ON DetailIE.ItemId = Item.ItemId\n" +
                     "WHERE IE.RoleIE = ? and IE.StoreId = ?\n" +
-                    "group by item.ItemId, item.NameItem";
+                    "GROUP BY item.ItemId, item.NameItem";
+
             try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
                 preparedStatement.setString(1, "C1");
                 preparedStatement.setString(2, storeId);
@@ -124,7 +100,6 @@ public class DetailStoreController implements Initializable {
             e.printStackTrace();
         }
     }
-
 
     private void renderListItem() {
         for (int i = 0; i < listItemInDetailStore.size(); i++) {
@@ -208,5 +183,44 @@ public class DetailStoreController implements Initializable {
             e.printStackTrace();
         }
 
+    }
+
+    private void handleImportNewItem() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Client/Store/DetailStoreClient/ImportItemClient.fxml"));
+        Stage createUserStage = new Stage();
+        createStage(loader, createUserStage);
+
+        createUserStage.setOnHiding(event -> {
+            updateData();
+        });
+    }
+
+    private void handleExportNewItem() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Client/Store/DetailStoreClient/ExportItemClient.fxml"));
+        Stage createUserStage = new Stage();
+        createStage(loader, createUserStage);
+
+        createUserStage.setOnHiding(event -> {
+            updateData();
+        });
+    }
+
+    private void updateData() {
+        vbox.getChildren().clear();
+        listItemInDetailStore.clear();
+        callAPI();
+        renderListItem();
+    }
+
+    public void createStage(FXMLLoader loader, Stage stage) {
+        try {
+            Scene scene = new Scene(loader.load());
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.setTitle("Create new store");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

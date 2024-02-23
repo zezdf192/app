@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.app.Controller.Admin.Censorship.ItemVatTuController"
+            prefHeight="60.0" prefWidth="688.0">
+    <children>
+        <Text fx:id="IEId" layoutX="24.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16px; -fx-font-weight: 700;" text="Text" />
+        <Text fx:id="nameIE" layoutX="300.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16px;" text="Text" />
+        <Text fx:id="quantity"  layoutX="640.0" layoutY="13.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16px;" text="Text" />
+    </children>
+</AnchorPane>

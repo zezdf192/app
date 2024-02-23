@@ -21,6 +21,10 @@ public class AdminController implements Initializable {
                 case MANAGE_ITEM:
                     admin_parent.setCenter(Model.getInstance().getViewAdminFactory().getManageItemView());
                     break;
+                case CENCORSHIP:
+                    admin_parent.setCenter(Model.getInstance().getViewAdminFactory().getCensorshipView());
+                    break;
+
                 default:
 
                     break;

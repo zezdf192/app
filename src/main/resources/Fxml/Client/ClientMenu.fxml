@@ -31,16 +31,16 @@
                     <!--                    <FontAwesomeIconView glyphName="BOOK" text="" />-->
                 </graphic>
             </Button>
-            <Button fx:id="censorship_btn" layoutX="21.0" layoutY="77.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="106.0" styleClass="icon_text-sm" text="Nhập hàng">
-                <graphic>
-                    <!--                    <FontAwesomeIconView glyphName="HEADPHONES" />-->
-                </graphic>
-                <stylesheets>
-                    <URL value="@../../Styles/page.css" />
-                    <URL value="@../../Styles/page.css" />
-                </stylesheets>
-            </Button>
-            <Button fx:id="statistical" layoutX="21.0" layoutY="139.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="106.0" styleClass="icon_text-sm" text="Xuất hàng">
+<!--            <Button fx:id="censorship_btn" layoutX="21.0" layoutY="77.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="106.0" styleClass="icon_text-sm" text="Nhập hàng">-->
+<!--                <graphic>-->
+<!--                    &lt;!&ndash;                    <FontAwesomeIconView glyphName="HEADPHONES" />&ndash;&gt;-->
+<!--                </graphic>-->
+<!--                <stylesheets>-->
+<!--                    <URL value="@../../Styles/page.css" />-->
+<!--                    <URL value="@../../Styles/page.css" />-->
+<!--                </stylesheets>-->
+<!--            </Button>-->
+            <Button fx:id="check" layoutX="21.0" layoutY="139.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="106.0" styleClass="icon_text-sm" text="Kiểm duyệt đơn hàng">
                 <graphic>
                     <!--                    <FontAwesomeIconView glyphName="HEART" />-->
                 </graphic>

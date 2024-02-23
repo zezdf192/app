@@ -6,5 +6,7 @@ public enum AdminMenuOptions {
     MANAGE_STORE,
 
     MANAGE_ITEM,
+
+    CENCORSHIP,
     OTHER
 }

@@ -1,18 +1,18 @@
 package com.example.app.Models.Admin;
 
-public class DetailIE {
+public class DetailIEModel {
     private String IEId;
     private String ItemId;
 
     private int quantity;
 
-    public DetailIE(String IEId, String itemId, int quantity) {
+    public DetailIEModel(String IEId, String itemId, int quantity) {
         this.IEId = IEId;
         ItemId = itemId;
         this.quantity = quantity;
     }
 
-    public DetailIE() {}
+    public DetailIEModel() {}
 
     public String getIEId() {
         return IEId;

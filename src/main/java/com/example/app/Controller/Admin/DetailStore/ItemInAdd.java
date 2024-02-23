@@ -1,6 +1,6 @@
 package com.example.app.Controller.Admin.DetailStore;
 
-import com.example.app.Models.Admin.DetailIE;
+import com.example.app.Models.Admin.DetailIEModel;
 import com.example.app.Models.Admin.Item;
 import com.example.app.Models.Data;
 import javafx.beans.value.ChangeListener;
@@ -21,19 +21,17 @@ public class ItemInAdd implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //quantity.setOnKeyPressed(event -> handleChange());
         quantity.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-
                 updateValueByKey(Data.getDataGLobal.dataGlobal.getCurrentDetailIE(), itemId.getText(), newValue);
             }
         });
     }
 
-    public static void updateValueByKey(List<DetailIE> array, String key, String newValue) {
+    public static void updateValueByKey(List<DetailIEModel> array, String key, String newValue) {
         if (newValue.equals("")) return;
-        for (DetailIE example : array) {
+        for (DetailIEModel example : array) {
             if (example.getItemId().equals(key)) {
                 example.setQuantity(Integer.parseInt(newValue));
                 break; // Nếu bạn muốn dừng lại sau khi tìm thấy phần tử có key tương ứng

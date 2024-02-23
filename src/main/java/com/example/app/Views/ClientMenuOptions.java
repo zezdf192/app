@@ -7,5 +7,7 @@ public enum ClientMenuOptions {
 
     EXPORTITEM,
     STORE,
+
+    CHECK,
     OTHER
 }

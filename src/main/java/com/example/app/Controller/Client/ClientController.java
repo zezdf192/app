@@ -10,19 +10,17 @@ import java.util.ResourceBundle;
 public class ClientController implements Initializable {
     public BorderPane client_parent;
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Model.getInstance().getViewFactory().getClientSelectedMenuItem().addListener((observableValue, oldVal, newVal) -> {
+
+        Model.getInstance().getViewClientFactory().getClientSelectedMenuItem().addListener((observableValue, oldVal, newVal) -> {
             switch (newVal) {
                 case INFOACCOUNT:
-                    client_parent.setCenter(Model.getInstance().getViewFactory().getInfoAccountView());
-                    break;
-                case IMPORTITEM:
-                    client_parent.setCenter(Model.getInstance().getViewFactory().getImportItemView());
-                    break;
-                case EXPORTITEM:
-                    client_parent.setCenter(Model.getInstance().getViewFactory().getExportItemView());
+                    client_parent.setCenter(Model.getInstance().getViewClientFactory().getInfoAccountView());
                     break;
                 case STORE:
-                    client_parent.setCenter(Model.getInstance().getViewFactory().getStoreView());
+                    client_parent.setCenter(Model.getInstance().getViewClientFactory().getStoreView());
+                    break;
+                case CHECK:
+                    client_parent.setCenter(Model.getInstance().getViewClientFactory().getCheckView());
                     break;
                 default:
 

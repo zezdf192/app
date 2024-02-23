@@ -17,6 +17,9 @@ public class ViewAdminFactory {
 
     private AnchorPane manageItemView;
 
+    private AnchorPane censorshipView;
+
+
 
     public ViewAdminFactory() {
         this.adminSelectedMenuItem = new SimpleObjectProperty<>();
@@ -38,6 +41,7 @@ public class ViewAdminFactory {
     }
 
     public AnchorPane getManageStoreView() {
+
         if (manageStoreView == null) {
             try {
                 manageStoreView = new FXMLLoader(getClass().getResource("/Fxml/Admin/ManageStore/ManageStore.fxml")).load();
@@ -58,6 +62,19 @@ public class ViewAdminFactory {
         }
         return manageItemView;
     }
+
+    public AnchorPane getCensorshipView() {
+        if (censorshipView == null) {
+            try {
+                censorshipView = new FXMLLoader(getClass().getResource("/Fxml/Admin/Censorship/Censorship.fxml")).load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return censorshipView;
+    }
+
+
 
 
     public void showAdminWindow() {

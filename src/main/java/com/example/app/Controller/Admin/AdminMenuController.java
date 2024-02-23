@@ -22,6 +22,7 @@ public class AdminMenuController implements Initializable {
         manage_user.setOnAction(event -> manage_user());
         manage_store.setOnAction(event -> manage_store());
         manage_item.setOnAction(event -> manage_item());
+        censorship_btn.setOnAction(event -> censorshipView());
     }
 
     private void manage_user () {
@@ -32,5 +33,9 @@ public class AdminMenuController implements Initializable {
     }
     private void manage_item () {
         Model.getInstance().getViewAdminFactory().getAdminSelectedMenuItem().set(AdminMenuOptions.MANAGE_ITEM);
+    }
+
+    private void censorshipView () {
+        Model.getInstance().getViewAdminFactory().getAdminSelectedMenuItem().set(AdminMenuOptions.CENCORSHIP);
     }
 }

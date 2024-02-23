@@ -8,7 +8,7 @@
 
 <BorderPane fx:id="client_parent" xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            prefHeight="400.0" prefWidth="600.0">
+            >
     <left>
         <fx:include source="ClientMenu.fxml"/>
     </left>
@@ -16,3 +16,5 @@
         <fx:include source="InfoAccount/InfoAccount.fxml"/>
     </center>
 </BorderPane>
+
+

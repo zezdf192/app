@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.VBox?>
+<AnchorPane prefHeight="597.0" prefWidth="810.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.app.Controller.Admin.Censorship.DetailIE">
+    <children>
+        <Button fx:id="not_btn" layoutX="684.0" layoutY="543.0" mnemonicParsing="false" text="Từ chối duyệt" />
+        <Text layoutX="241.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 24px; -fx-font-weight: 700; -fx-fill: #212c8f;" text="Kiểm duyệt chi tiết đơn hàng" />
+        <ScrollPane layoutX="46.0" layoutY="256.0" prefHeight="276.0" prefWidth="728.0">
+            <content>
+                <VBox fx:id="vbox" layoutX="1.0" prefHeight="257.0" prefWidth="700.0" >
+                    <children></children>
+                </VBox>
+            </content>
+        </ScrollPane>
+        <Text layoutX="46.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px;" text="Mã đơn hàng:" />
+        <Text layoutX="46.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px;" text="Mã kho hàng:" />
+        <Text layoutX="471.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px;" text="Thời gian: " />
+      <Text layoutX="471.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px;" text="Loại đơn:" />
+      <Text layoutX="46.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px;" text="Mã người phụ trách:" />
+      <Text layoutX="470.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px;" text="Trạng thái:" />
+      <Label fx:id="IEId" layoutX="179.0" layoutY="77.0" style="-fx-font-size: 16px; -fx-font-weight: 700;" text="Mã đơn" />
+      <Label fx:id="storeId" layoutX="178.0" layoutY="115.0" style="-fx-font-size: 16px; -fx-font-weight: 700;" text="Mã đơn" />
+      <Label fx:id="personId" layoutX="237.0" layoutY="160.0" style="-fx-font-size: 16px; -fx-font-weight: 700;" text="Mã đơn" />
+      <Label fx:id="timeIE" layoutX="569.0" layoutY="77.0" style="-fx-font-size: 16px; -fx-font-weight: 700;" text="Mã đơn" />
+      <Label fx:id="typeIE" layoutX="569.0" layoutY="115.0" style="-fx-font-size: 16px; -fx-font-weight: 700;" text="Mã đơn" />
+      <Label fx:id="roleIE" layoutX="569.0" layoutY="160.0" style="-fx-font-size: 16px; -fx-font-weight: 700;" text="Mã đơn" />
+      <Button fx:id="yes_btn1" layoutX="555.0" layoutY="543.0" mnemonicParsing="false" text="Đồng ý duyệt" />
+      <Text layoutX="46.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px;" text="Mã vật tư" />
+      <Text layoutX="354.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px;" text="Tên vật tư" />
+      <Text layoutX="628.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px;" text="Số lượng" />
+    </children>
+</AnchorPane>

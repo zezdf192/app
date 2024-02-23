@@ -1,6 +1,7 @@
-package com.example.app.Controller.Admin.DetailStore;
+package com.example.app.Controller.Client.Store.DetailStoreClient;
 
 import com.example.app.ConnectDB.ConnectDB;
+import com.example.app.Controller.Admin.DetailStore.ItemInAdd;
 import com.example.app.Models.Admin.DetailIEModel;
 import com.example.app.Models.Admin.Item;
 import com.example.app.Models.Admin.ItemStore;
@@ -25,19 +26,16 @@ import java.util.List;
 import java.util.Random;
 import java.util.ResourceBundle;
 
-public class CreateNewItemInStoreController implements Initializable {
-
-    //public TextField quantity_input;
-    public Button create_btn;
-//    public ComboBox item_comboBox;
+public class ImportItemClient implements Initializable {
+    public Button import_btn;
     public VBox vbox;
-    private List<Item> listItem = new ArrayList<>();
 
+    private List<Item> listItem = new ArrayList<>();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         getItem();
         renderListItem();
-        create_btn.setOnAction(event -> handleCreateNewItemInStore());
+        import_btn.setOnAction(event -> handleImportItemInStore());
     }
 
     private void getItem() {
@@ -100,24 +98,24 @@ public class CreateNewItemInStoreController implements Initializable {
     private void updateDBDetailIE(String randomString) {
 
         for (DetailIEModel IE : Data.getDataGLobal.dataGlobal.getCurrentDetailIE()) {
-                if(IE.getQuantity() == 0) {
-                    continue;
-                }
-                try (Connection connection = ConnectDB.getConnection()) {
-                    String sql = "INSERT INTO DetailIE (IEId, ItemId, Quantity) VALUES (?, ?, ?)";
-
-                    try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-                        preparedStatement.setString(1, randomString);
-                        preparedStatement.setString(2, IE.getItemId());
-                        preparedStatement.setInt(3,  IE.getQuantity());
-                        int rowsAffected = preparedStatement.executeUpdate();
-                    }
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    showAlert("Lỗi", "Lỗi không xác định!", Alert.AlertType.ERROR);
-                }
+            if(IE.getQuantity() == 0) {
+                continue;
             }
+            try (Connection connection = ConnectDB.getConnection()) {
+                String sql = "INSERT INTO DetailIE (IEId, ItemId, Quantity) VALUES (?, ?, ?)";
+
+                try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                    preparedStatement.setString(1, randomString);
+                    preparedStatement.setString(2, IE.getItemId());
+                    preparedStatement.setInt(3,  IE.getQuantity());
+                    int rowsAffected = preparedStatement.executeUpdate();
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                showAlert("Lỗi", "Lỗi không xác định!", Alert.AlertType.ERROR);
+            }
+        }
 
 
     }
@@ -128,14 +126,12 @@ public class CreateNewItemInStoreController implements Initializable {
                 showAlert("Lỗi", "Không được nhập số âm!", Alert.AlertType.ERROR);
                 return false;
             }
-
-
         }
 
         return true;
     }
 
-    private void handleCreateNewItemInStore() {
+    private void handleImportItemInStore() {
         String randomString = generateRandomString(6);
         LocalDate currentDate = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -158,7 +154,7 @@ public class CreateNewItemInStoreController implements Initializable {
                 preparedStatement.setString(2, String.valueOf(sqlDate));
                 preparedStatement.setString(3,  store.getStoreId());
                 preparedStatement.setString(4,  "P1");
-                preparedStatement.setString(5,  "C1");
+                preparedStatement.setString(5,  "C2");
                 preparedStatement.setString(6,  "Nhập hàng");
                 int rowsAffected = preparedStatement.executeUpdate();
             }
@@ -171,7 +167,7 @@ public class CreateNewItemInStoreController implements Initializable {
         // Insert DetailIE after IE because FOREIGN KEY
         updateDBDetailIE(randomString);
 
-        Stage stage = (Stage) create_btn.getScene().getWindow();
+        Stage stage = (Stage) import_btn.getScene().getWindow();
         stage.close();
     }
 

@@ -1,7 +1,9 @@
-package com.example.app.Controller.Admin.DetailStore;
+package com.example.app.Controller.Client.Store.DetailStoreClient;
 
 import com.example.app.ConnectDB.ConnectDB;
+import com.example.app.Controller.Admin.DetailStore.ItemInAdd;
 import com.example.app.Models.Admin.DetailIEModel;
+import com.example.app.Models.Admin.DetailStore.ItemInDetailStoreModel;
 import com.example.app.Models.Admin.Item;
 import com.example.app.Models.Admin.ItemStore;
 import com.example.app.Models.Data;
@@ -25,19 +27,36 @@ import java.util.List;
 import java.util.Random;
 import java.util.ResourceBundle;
 
-public class CreateNewItemInStoreController implements Initializable {
-
-    //public TextField quantity_input;
-    public Button create_btn;
-//    public ComboBox item_comboBox;
+public class ExportItemClient implements Initializable {
+    public Button export_btn;
     public VBox vbox;
+
     private List<Item> listItem = new ArrayList<>();
+
+    private List<ItemInDetailStoreModel> listItemInDetailStore = new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         getItem();
         renderListItem();
-        create_btn.setOnAction(event -> handleCreateNewItemInStore());
+        callAPI();
+        export_btn.setOnAction(event -> handleExportItemInStore());
+    }
+
+    private void renderListItem() {
+        for (int i = 0; i < listItem.size(); i++) {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/Fxml/Admin/DetailStore/ItemInAdd.fxml"));
+
+            try {
+                AnchorPane hBox = fxmlLoader.load();
+                ItemInAdd cic = fxmlLoader.getController();
+                cic.setData(listItem.get(i));
+                vbox.getChildren().add(hBox);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private void getItem() {
@@ -66,22 +85,6 @@ public class CreateNewItemInStoreController implements Initializable {
         }
     }
 
-    private void renderListItem() {
-        for (int i = 0; i < listItem.size(); i++) {
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/Fxml/Admin/DetailStore/ItemInAdd.fxml"));
-
-            try {
-                AnchorPane hBox = fxmlLoader.load();
-                ItemInAdd cic = fxmlLoader.getController();
-                cic.setData(listItem.get(i));
-                vbox.getChildren().add(hBox);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
     private  String generateRandomString(int length) {
         String characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         StringBuilder randomStringBuilder = new StringBuilder();
@@ -97,28 +100,31 @@ public class CreateNewItemInStoreController implements Initializable {
     }
 
 
-    private void updateDBDetailIE(String randomString) {
+    private boolean updateDBDetailIE(String randomString) {
 
         for (DetailIEModel IE : Data.getDataGLobal.dataGlobal.getCurrentDetailIE()) {
-                if(IE.getQuantity() == 0) {
-                    continue;
-                }
-                try (Connection connection = ConnectDB.getConnection()) {
-                    String sql = "INSERT INTO DetailIE (IEId, ItemId, Quantity) VALUES (?, ?, ?)";
-
-                    try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-                        preparedStatement.setString(1, randomString);
-                        preparedStatement.setString(2, IE.getItemId());
-                        preparedStatement.setInt(3,  IE.getQuantity());
-                        int rowsAffected = preparedStatement.executeUpdate();
-                    }
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    showAlert("Lỗi", "Lỗi không xác định!", Alert.AlertType.ERROR);
-                }
+            if(IE.getQuantity() == 0) {
+                continue;
             }
+            int absoluteInt = -IE.getQuantity();
 
+            try (Connection connection = ConnectDB.getConnection()) {
+
+                String sql = "INSERT INTO DetailIE (IEId, ItemId, Quantity) VALUES (?, ?, ?)";
+
+                try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                    preparedStatement.setString(1, randomString);
+                    preparedStatement.setString(2, IE.getItemId());
+                    preparedStatement.setInt(3,  absoluteInt);
+                    int rowsAffected = preparedStatement.executeUpdate();
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                showAlert("Lỗi", "Lỗi không xác định!", Alert.AlertType.ERROR);
+            }
+        }
+        return true;
 
     }
 
@@ -129,13 +135,23 @@ public class CreateNewItemInStoreController implements Initializable {
                 return false;
             }
 
+            for (ItemInDetailStoreModel x : listItemInDetailStore) {
+                if(x.getItemId().equals(IE.getItemId())) {
+                    if(x.getQuantity() < IE.getQuantity()) {
+                        showAlert("Lỗi", IE.getItemId() + " không được lấy quá số hàng trong kho", Alert.AlertType.ERROR);
+                        return false;
+                    }
+                    break;
+                }
+            }
 
         }
 
         return true;
     }
 
-    private void handleCreateNewItemInStore() {
+
+    private void handleExportItemInStore() {
         String randomString = generateRandomString(6);
         LocalDate currentDate = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -158,21 +174,49 @@ public class CreateNewItemInStoreController implements Initializable {
                 preparedStatement.setString(2, String.valueOf(sqlDate));
                 preparedStatement.setString(3,  store.getStoreId());
                 preparedStatement.setString(4,  "P1");
-                preparedStatement.setString(5,  "C1");
-                preparedStatement.setString(6,  "Nhập hàng");
+                preparedStatement.setString(5,  "C2");
+                preparedStatement.setString(6,  "Xuất hàng");
                 int rowsAffected = preparedStatement.executeUpdate();
             }
+            updateDBDetailIE(randomString); //Check insert DetailIE
 
         } catch (Exception e) {
             e.printStackTrace();
             showAlert("Lỗi", "Lỗi không xác định!", Alert.AlertType.ERROR);
         }
 
-        // Insert DetailIE after IE because FOREIGN KEY
-        updateDBDetailIE(randomString);
 
-        Stage stage = (Stage) create_btn.getScene().getWindow();
+
+        Stage stage = (Stage) export_btn.getScene().getWindow();
         stage.close();
+    }
+
+    public void callAPI() {
+        String storeId = Data.getDataGLobal.dataGlobal.getCurrentEditStore().getStoreId();
+        try (Connection connection = ConnectDB.getConnection()) {
+            String query = "SELECT item.ItemId, item.NameItem, SUM(DetailIE.Quantity) AS TotalQuantity\n" +
+                    "FROM DetailIE\n" +
+                    "JOIN IE ON DetailIE.IEId = IE.IEId\n" +
+                    "JOIN Item ON DetailIE.ItemId = Item.ItemId\n" +
+                    "WHERE IE.RoleIE = ? and IE.StoreId = ?\n" +
+                    "GROUP BY item.ItemId, item.NameItem";
+
+            try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                preparedStatement.setString(1, "C1");
+                preparedStatement.setString(2, storeId);
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    while (resultSet.next()) {
+                        String itemId = resultSet.getString("ItemId");
+                        String itemName = resultSet.getString("NameItem");
+                        int quantity = resultSet.getInt("TotalQuantity");
+                        ItemInDetailStoreModel itemInDetailStore = new ItemInDetailStoreModel(itemId, itemName, quantity);
+                        listItemInDetailStore.add(itemInDetailStore);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void showAlert(String title, String content, Alert.AlertType alertType) {
@@ -182,4 +226,5 @@ public class CreateNewItemInStoreController implements Initializable {
         alert.setContentText(content);
         alert.showAndWait();
     }
+
 }

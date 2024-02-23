@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.app.Controller.Client.Store.DetailStoreClient.DetailStoreClient"
+            prefHeight="600.0" prefWidth="960.0" >
+    <children>
+        <Text fx:id="nameStore" layoutX="36.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 20px; -fx-font-weight: 700;" text="Kho hàng" />
+        <Text fx:id="addressStore" layoutX="526.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px; -fx-font-weight: 700;" text="Địa chỉ" />
+        <Text layoutX="36.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 18px;" text="Quản lý vật tư trong kho" />
+        <Button fx:id="importItem" layoutX="36.0" layoutY="103.0" mnemonicParsing="false" text="Thêm mặt hàng" />
+        <Button fx:id="exportItem" layoutX="176.0" layoutY="103.0" mnemonicParsing="false" text="Xuất mặt hàng" />
+        <Button fx:id="find_btn" layoutX="853.0" layoutY="103.0" mnemonicParsing="false" text="Tìm kiếm" />
+        <ComboBox fx:id="find_comboBox" layoutX="361.0" layoutY="103.0" prefWidth="150.0" promptText="Tìm kiếm theo tên vật tư" />
+        <ComboBox fx:id="sort_comboBox" layoutX="526.0" layoutY="103.0" prefWidth="150.0" promptText="Không sắp xếp" />
+        <TextField fx:id="text_find" layoutX="694.0" layoutY="103.0" />
+        <Text layoutX="36.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16px;" text="Mã vật tư" />
+        <Text layoutX="302.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16px;" text="Tên vật tư" />
+        <Text layoutX="706.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 16px;" text="Số lượng trong kho" />
+        <ScrollPane layoutX="34.0" layoutY="176.0" prefHeight="418.0" prefWidth="874.0">
+            <content>
+                <VBox fx:id="vbox" layoutX="1.0" prefHeight="417.0" prefWidth="875.0">
+                    <children />
+                </VBox>
+            </content>
+        </ScrollPane>
+    </children>
+
+</AnchorPane>

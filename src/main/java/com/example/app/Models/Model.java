@@ -1,6 +1,7 @@
 package com.example.app.Models;
 
 import com.example.app.Views.ViewAdminFactory;
+import com.example.app.Views.ViewClientFactory;
 import com.example.app.Views.ViewFactory;
 
 public class Model {
@@ -8,10 +9,15 @@ public class Model {
     private final ViewFactory viewFactory;
     private final ViewAdminFactory viewAdminFactory;
 
+    private final ViewClientFactory viewClientFactory;
+
     private Model() {
         this.viewFactory = new ViewFactory();
         this.viewAdminFactory = new ViewAdminFactory();
+        this.viewClientFactory = new ViewClientFactory();
     }
+
+
 
     public static synchronized Model getInstance() {
         if(model == null) {
@@ -27,5 +33,9 @@ public class Model {
 
     public ViewAdminFactory getViewAdminFactory() {
         return viewAdminFactory;
+    }
+
+    public ViewClientFactory getViewClientFactory() {
+        return viewClientFactory;
     }
 }

@@ -1,10 +1,10 @@
 package com.example.app.Models;
 
 import com.example.app.ConnectDB.ConnectDB;
-import com.example.app.Models.Admin.DetailIE;
+import com.example.app.Models.Admin.DetailIEModel;
 import com.example.app.Models.Admin.Item;
 import com.example.app.Models.Admin.ItemStore;
-import com.example.app.Models.User.User;
+import com.example.app.Models.User.IE;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,12 +16,15 @@ public class Data {
     private ItemStore currentEditStore;
 
     private Item currentEditItem;
-    private List<DetailIE>  currentDetailIE;
+    private List<DetailIEModel>  currentDetailIE;
+
+    private IE currentIE;
 
     public Data() {
         currentEditStore = new ItemStore();
         currentDetailIE = new ArrayList<>();
         currentEditItem = new Item();
+        currentIE = new IE();
         getAllItem();
     }
 
@@ -35,7 +38,7 @@ public class Data {
             while (resultSet.next()) {
                 //  String origin, int quantity, String img, float price, String desItem
                 String itemId = resultSet.getString("ItemId");
-                DetailIE detailIE = new DetailIE("", itemId, 0);
+                DetailIEModel detailIE = new DetailIEModel("", itemId, 0);
                 currentDetailIE.add(detailIE);
             }
 
@@ -58,12 +61,20 @@ public class Data {
         this.currentEditStore = currentEditStore;
     }
 
-    public List<DetailIE> getCurrentDetailIE() {
+    public List<DetailIEModel> getCurrentDetailIE() {
         return currentDetailIE;
     }
 
-    public void setCurrentDetailIE(List<DetailIE> currentDetailIE) {
+    public void setCurrentDetailIE(List<DetailIEModel> currentDetailIE) {
         this.currentDetailIE = currentDetailIE;
+    }
+
+    public IE getCurrentIE() {
+        return currentIE;
+    }
+
+    public void setCurrentIE(IE currentIE) {
+        this.currentIE = currentIE;
     }
 
     public class getDataGLobal {
