@@ -94,12 +94,11 @@ public class ManageItem implements Initializable {
                 String itemId = resultSet.getString("ItemId");
                 String roleItem = resultSet.getString("RoleItem");
                 String nameItem = resultSet.getString("NameItem");
-                int quantityItem = resultSet.getInt("Quantity");
                 String originItem = resultSet.getString("Origin");
                 String imgItem = resultSet.getString("Img");
                 String desItem = resultSet.getString("DesItem");
 
-                Item itemItem = new Item(itemId, roleItem, nameItem, originItem, quantityItem, imgItem, desItem);
+                Item itemItem = new Item(itemId, roleItem, nameItem, originItem,  imgItem, desItem);
                 listItem.add(itemItem);
             }
 
@@ -185,12 +184,11 @@ public class ManageItem implements Initializable {
                 String itemId = resultSet.getString("ItemId");
                 String roleItem = resultSet.getString("RoleItem");
                 String nameItem = resultSet.getString("NameItem");
-                int quantityItem = resultSet.getInt("Quantity");
                 String originItem = resultSet.getString("Origin");
                 String imgItem = resultSet.getString("Img");
                 String desItem = resultSet.getString("DesItem");
 
-                Item itemItem = new Item(itemId, roleItem, nameItem, originItem, quantityItem, imgItem, desItem);
+                Item itemItem = new Item(itemId, roleItem, nameItem, originItem,  imgItem, desItem);
                 listItem.add(itemItem);
             }
             vbox.getChildren().clear();

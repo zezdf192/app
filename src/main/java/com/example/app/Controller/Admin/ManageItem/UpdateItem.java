@@ -31,7 +31,6 @@ public class UpdateItem implements Initializable {
         role_item.setText(item.getRoleItem());
         name_item.setText(item.getNameItem());
         origin_item.setText(item.getOrigin());
-        quantity_item.setText(String.valueOf(item.getQuantity()));
         des_item.setText(item.getDesItem());
     }
 }

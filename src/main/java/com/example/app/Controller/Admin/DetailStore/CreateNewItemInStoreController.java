@@ -58,12 +58,11 @@ public class CreateNewItemInStoreController implements Initializable {
                 String roleItem = resultSet.getString("RoleItem");
                 String nameItem = resultSet.getString("NameItem");
                 String origin = resultSet.getString("Origin");
-                int quantity = resultSet.getInt("Quantity");
                 String img = resultSet.getString("Img");
 
                 String desItem = resultSet.getString("DesItem");
 
-                Item newItem = new Item(itemId, roleItem, nameItem, origin, quantity, img, desItem);
+                Item newItem = new Item(itemId, roleItem, nameItem, origin, img, desItem);
                 listItem.add(newItem);
             }
 

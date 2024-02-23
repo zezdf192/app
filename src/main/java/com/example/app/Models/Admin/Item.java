@@ -5,19 +5,17 @@ public class Item {
     private String RoleItem;
     private String NameItem;
     private String Origin;
-    private int Quantity;
+
     private String Img;
 
     private String DesItem;
 
-    public Item(String itemId, String roleItem, String nameItem, String origin, int quantity, String img,String desItem) {
+    public Item(String itemId, String roleItem, String nameItem, String origin,  String img,String desItem) {
         ItemId = itemId;
         RoleItem = roleItem;
         NameItem = nameItem;
         Origin = origin;
-        Quantity = quantity;
         Img = img;
-
         DesItem = desItem;
     }
 
@@ -55,14 +53,6 @@ public class Item {
 
     public void setOrigin(String origin) {
         Origin = origin;
-    }
-
-    public int getQuantity() {
-        return Quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        Quantity = quantity;
     }
 
     public String getImg() {

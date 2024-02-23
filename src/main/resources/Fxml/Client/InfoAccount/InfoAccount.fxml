@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.app.Controller.Client.InfoAccount.InfoAccount">
-   <children>
-      <Label layoutX="74.0" layoutY="25.0" style="-fx-font-size: 20px; -fx-text-fill: #212c8f; -fx-font-weight: 800;" text="Thông Tin Tài Khoản" />
-      <Label layoutX="74.0" layoutY="83.0" text="Họ và Tên" />
-      <Label layoutX="74.0" layoutY="137.0" text="Số điện thoại" />
-      <Label layoutX="74.0" layoutY="191.0" text="Email" />
-      <Label layoutX="74.0" layoutY="247.0" text="Địa chỉ" />
-      <Label layoutX="74.0" layoutY="303.0" text="Chức vụ" />
-      <Label layoutX="74.0" layoutY="356.0" text="Căn cước công dân" />
-      <Label fx:id="name_User" layoutX="392.0" layoutY="83.0" text="Họ và tên" />
-      <Label fx:id="phoneNumber_User" layoutX="392.0" layoutY="137.0" text="Số điện thoại" />
-      <Label fx:id="email_User" layoutX="392.0" layoutY="191.0" text="Email" />
-      <Label fx:id="address_User" layoutX="392.0" layoutY="247.0" text="Địa chỉ" />
-      <Label fx:id="role_User" layoutX="392.0" layoutY="303.0" text="Chức vụ" />
-      <Label fx:id="cccd_User" layoutX="392.0" layoutY="356.0" text="CCCD" />
-   </children>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.app.Controller.Client.InfoAccount.InfoAccount">
+   <AnchorPane prefHeight="599.0" prefWidth="934.0" >
+      <children>
+         <Label layoutX="74.0" layoutY="25.0" style="-fx-font-size: 20px; -fx-text-fill: #212c8f; -fx-font-weight: 800;" text="Thông Tin Tài Khoản" />
+         <Label layoutX="74.0" layoutY="83.0" text="Họ và Tên" />
+         <Label layoutX="74.0" layoutY="137.0" text="Số điện thoại" />
+         <Label layoutX="74.0" layoutY="191.0" text="Email" />
+         <Label layoutX="74.0" layoutY="247.0" text="Địa chỉ" />
+         <Label layoutX="74.0" layoutY="303.0" text="Chức vụ" />
+         <Label layoutX="74.0" layoutY="356.0" text="Căn cước công dân" />
+         <Label fx:id="name_User" layoutX="392.0" layoutY="83.0" text="Họ và tên" />
+         <Label fx:id="phoneNumber_User" layoutX="392.0" layoutY="137.0" text="Số điện thoại" />
+         <Label fx:id="email_User" layoutX="392.0" layoutY="191.0" text="Email" />
+         <Label fx:id="address_User" layoutX="392.0" layoutY="247.0" text="Địa chỉ" />
+         <Label fx:id="role_User" layoutX="392.0" layoutY="303.0" text="Chức vụ" />
+         <Label fx:id="cccd_User" layoutX="392.0" layoutY="356.0" text="CCCD" />
+      </children>
+   </AnchorPane>
 </AnchorPane>

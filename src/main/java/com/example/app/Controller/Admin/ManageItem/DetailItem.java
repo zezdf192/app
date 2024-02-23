@@ -27,7 +27,6 @@ public class DetailItem implements Initializable {
         role_Item.setText(item.getRoleItem());
         name_Item.setText(item.getNameItem());
         origin_Item.setText(item.getOrigin());
-        quantity_Item.setText(String.valueOf(item.getQuantity()));
         des_Item.setText(item.getDesItem());
     }
 }

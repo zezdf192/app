@@ -51,7 +51,6 @@ public class ItemItem implements Initializable {
     public void setData(Item item) {
         id_item.setText(item.getItemId());
         name_item.setText(item.getNameItem());
-        quantity_item.setText(String.valueOf(item.getQuantity()));
         role_item = item.getRoleItem();
         origin_item = item.getOrigin();
         img_item = item.getImg();
@@ -72,12 +71,11 @@ public class ItemItem implements Initializable {
                 String roleItem = resultSet.getString("RoleItem");
                 String nameItem = resultSet.getString("NameItem");
                 String origin = resultSet.getString("Origin");
-                int quantity = resultSet.getInt("Quantity");
                 String img = resultSet.getString("Img");
 
                 String desItem = resultSet.getString("DesItem");
 
-                Item item = new Item(itemId, roleItem, nameItem, origin, quantity, img, desItem);
+                Item item = new Item(itemId, roleItem, nameItem, origin, img, desItem);
 
                 Data.getDataGLobal.dataGlobal.setCurrentEditItem(item);
             }
@@ -112,12 +110,11 @@ public class ItemItem implements Initializable {
                 String roleItem = resultSet.getString("RoleItem");
                 String nameItem = resultSet.getString("NameItem");
                 String origin = resultSet.getString("Origin");
-                int quantity = resultSet.getInt("Quantity");
                 String img = resultSet.getString("Img");
 
                 String desItem = resultSet.getString("DesItem");
 
-                Item item = new Item(itemId, roleItem, nameItem, origin, quantity, img, desItem);
+                Item item = new Item(itemId, roleItem, nameItem, origin, img, desItem);
 
                 Data.getDataGLobal.dataGlobal.setCurrentEditItem(item);
             }
@@ -143,7 +140,6 @@ public class ItemItem implements Initializable {
 
         id_item.setText(item.getItemId());
         name_item.setText(item.getNameItem());
-        quantity_item.setText(String.valueOf(item.getQuantity()));
     }
 
     public void createStage(FXMLLoader loader, Stage stage) {

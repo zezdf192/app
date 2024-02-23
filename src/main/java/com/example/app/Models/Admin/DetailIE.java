@@ -3,6 +3,7 @@ package com.example.app.Models.Admin;
 public class DetailIE {
     private String IEId;
     private String ItemId;
+
     private int quantity;
 
     public DetailIE(String IEId, String itemId, int quantity) {
