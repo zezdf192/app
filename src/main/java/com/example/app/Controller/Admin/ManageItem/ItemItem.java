@@ -51,6 +51,7 @@ public class ItemItem implements Initializable {
     public void setData(Item item) {
         id_item.setText(item.getItemId());
         name_item.setText(item.getNameItem());
+        quantity_item.setText(item.getOrigin());
         role_item = item.getRoleItem();
         origin_item = item.getOrigin();
         img_item = item.getImg();

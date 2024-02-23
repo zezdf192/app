@@ -106,8 +106,8 @@ public class LoginController implements Initializable {
 //        }
 //    }
     private void onLogin() {
-        Model.getInstance().getViewAdminFactory().showAdminWindow();
-//        Model.getInstance().getViewFactory().showClientWindow();
+//        Model.getInstance().getViewAdminFactory().showAdminWindow();
+        Model.getInstance().getViewFactory().showClientWindow();
         Stage stage = (Stage) login_btn.getScene().getWindow();
         Model.getInstance().getViewFactory().closeStage(stage);
 //        try (Connection connection = ConnectDB.getConnection()) {

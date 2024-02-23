@@ -9,7 +9,7 @@
             <children>
                 <AnchorPane prefHeight="58.0" prefWidth="836.0">
                     <children>
-                        <Label fx:id="quantity_item" layoutX="489.0" layoutY="7.0" style="-fx-font-size: 18px;" text="Số Lượng" />
+                        <Label fx:id="quantity_item" layoutX="489.0" layoutY="7.0" style="-fx-font-size: 18px;" text="Xuat su" />
                         <Label fx:id="name_item" layoutX="221.0" layoutY="7.0" style="-fx-font-size: 18px;" text="Tên Mặt Hàng" />
                         <Label fx:id="id_item" layoutX="33.0" layoutY="7.0" style="-fx-font-size: 18px;" text="Mã Mặt Hàng" />
                         <Button fx:id="update_btn" layoutX="670.0" layoutY="10.0" mnemonicParsing="false" style="-fx-background-color: ABC9FF; -fx-text-fill: #ffffff;" text="Sửa" />
