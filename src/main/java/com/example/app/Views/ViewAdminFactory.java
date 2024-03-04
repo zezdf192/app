@@ -17,6 +17,7 @@ public class ViewAdminFactory {
 
     private AnchorPane manageItemView;
 
+    private AnchorPane manageItemUser;
     private AnchorPane censorshipView;
 
 
@@ -30,14 +31,14 @@ public class ViewAdminFactory {
     }
 
     public AnchorPane getManageUserView() {
-        if (manageStoreView == null) {
+        if (manageItemUser == null) {
             try {
-                manageStoreView = new FXMLLoader(getClass().getResource("/Fxml/Admin/ManageStore/ManageStore.fxml")).load();
+                manageItemUser = new FXMLLoader(getClass().getResource("/Fxml/Admin/ManageUser/ManageUser.fxml")).load();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        return manageStoreView;
+        return manageItemUser;
     }
 
     public AnchorPane getManageStoreView() {
@@ -62,6 +63,17 @@ public class ViewAdminFactory {
         }
         return manageItemView;
     }
+
+//    public AnchorPane getManageItemUser() {
+//        if (manageItemUser == null) {
+//            try {
+//                manageItemUser = new FXMLLoader(getClass().getResource("/Fxml/Admin/ManageUser/ManageUser.fxml")).load();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//        return manageItemUser;
+//    }
 
     public AnchorPane getCensorshipView() {
         if (censorshipView == null) {

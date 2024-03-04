@@ -18,6 +18,7 @@ public class AdminController implements Initializable {
                 case MANAGE_STORE:
                     admin_parent.setCenter(Model.getInstance().getViewAdminFactory().getManageStoreView());
                     break;
+
                 case MANAGE_ITEM:
                     admin_parent.setCenter(Model.getInstance().getViewAdminFactory().getManageItemView());
                     break;

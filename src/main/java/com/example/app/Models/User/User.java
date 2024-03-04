@@ -1,7 +1,7 @@
 package com.example.app.Models.User;
 
 public class User {
-    private Integer userId;
+    private String userId;
     private String email;
     private String userName;
     private String password;
@@ -9,7 +9,7 @@ public class User {
     private String address;
     private String role;
 
-    public User(Integer userId, String email, String userName, String password, String phoneNumber, String address, String role) {
+    public User(String userId, String email, String userName, String password, String phoneNumber, String address, String role) {
         this.userId = userId;
         this.email = email;
         this.userName = userName;
@@ -21,11 +21,11 @@ public class User {
 
     public User() {}
 
-    public Integer getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 

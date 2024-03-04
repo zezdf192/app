@@ -5,6 +5,7 @@ import com.example.app.Models.Admin.DetailIEModel;
 import com.example.app.Models.Admin.Item;
 import com.example.app.Models.Admin.ItemStore;
 import com.example.app.Models.User.IE;
+import com.example.app.Models.User.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,6 +16,8 @@ import java.util.List;
 public class Data {
     private ItemStore currentEditStore;
 
+    private User currentUser;
+
     private Item currentEditItem;
     private List<DetailIEModel>  currentDetailIE;
 
@@ -24,6 +27,7 @@ public class Data {
         currentEditStore = new ItemStore();
         currentDetailIE = new ArrayList<>();
         currentEditItem = new Item();
+        currentUser = new User();
         currentIE = new IE();
         getAllItem();
     }
@@ -75,6 +79,14 @@ public class Data {
 
     public void setCurrentIE(IE currentIE) {
         this.currentIE = currentIE;
+    }
+
+    public User getCurrentUser() {
+        return currentUser;
+    }
+
+    public void setCurrentUser(User currentUser) {
+        this.currentUser = currentUser;
     }
 
     public class getDataGLobal {

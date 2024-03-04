@@ -174,7 +174,7 @@ public class LoginController implements Initializable {
                     if (resultSet.next()) {
                         //Integer , String , String , String , String phoneNumber, String address, String role
                         User user = new User(null, null, null ,null, null, null, null);
-                        user.setUserId(resultSet.getInt("userId"));
+                        user.setUserId(resultSet.getString("userId"));
                         user.setEmail(resultSet.getString("email"));
                         user.setUserName(resultSet.getString("nameUser"));
                         user.setPhoneNumber(resultSet.getString("phoneNumber"));
